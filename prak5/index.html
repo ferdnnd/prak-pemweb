@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kalkulator</title>
+</head>
+<body>
+    <div class="judul">
+        <h1>Kalkulator Sederhana</h1>
+    </div>
+    <div class="container">
+        <div class="calculator">
+            <input type="text" id="display" readonly>
+            <div class="keys">
+                <button onclick="clearDisplay()">C</button>
+                <button onclick="handleClick('7')">7</button>
+                <button onclick="handleClick('8')">8</button>
+                <button onclick="handleClick('9')">9</button>
+                <button onclick="handleClick('/')">/</button>
+                <button onclick="handleClick('4')">4</button>
+                <button onclick="handleClick('5')">5</button>
+                <button onclick="handleClick('6')">6</button>
+                <button onclick="handleClick('*')">*</button>
+                <button onclick="handleClick('1')">1</button>
+                <button onclick="handleClick('2')">2</button>
+                <button onclick="handleClick('3')">3</button>
+                <button onclick="handleClick('-')">-</button>
+                <button onclick="handleClick('0')">0</button>
+                <button onclick="handleClick('.')">.</button>
+                <button onclick="calculate()">=</button>
+                <button onclick="handleClick('+')">+</button>
+                <button onclick="handleClickBackspace()">&larr;</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+            let display = document.getElementById('display');
+
+            function handleClick(value) {
+                display.value += value;
+            }
+
+            function calculate() {
+                try {
+                    display.value = eval(display.value);
+                } catch (error) {
+                    display.value = 'Error';
+                }
+            }
+
+            function clearDisplay() {
+                display.value = '';
+            }
+
+            function handleClickBackspace() {
+                display.value = display.value.slice(0, -1);
+            }
+
+            document.addEventListener('keydown', function (event) {
+                const key = event.key;
+                const allowedKeys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '+', '-', '*', '/', '.', '=', 'Enter', 'Backspace', 'Delete'];
+
+                if (allowedKeys.includes(key)) {
+
+                    if (key === 'Enter' || key === '=') {
+                        calculate();
+
+                    } else if (key === 'Backspace') {
+                        handleClickBackspace();
+
+                    } else if (key === 'Delete') {
+                        clearDisplay();
+                        
+                    } else {
+                        handleClick(key);
+                    }
+                }
+            });
+    </script>
+</body>
+</html>
