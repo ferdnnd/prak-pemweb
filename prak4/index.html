@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ganjil Genap</title>
+</head>
+<body>
+    <h1>Menghitung Bilangan Ganjil dan Genap</h1>
+    <p>Masukan bilangan bulat positif :</p>
+    <input type="number" id="inputvalue">
+    <button onclick="ganjilgenap()">hitung</button><br>
+    <div>
+        <p></p>
+        <span>Hasil :</span>
+    </div>
+    <div>
+        <p></p>
+        <span>Jumlah Bilangan ganjil : </span>
+        <span id="ganjil"></span>
+    </div>
+    <div>
+        <p></p>
+        <span>Jumlah Bilangan genap : </span>
+        <span id="genap"></span>
+    </div>
+    <script>
+            function ganjilgenap(){
+                let inputvalue = document.getElementById('inputvalue').value;
+                let input = parseInt(inputvalue);
+                let ganjil = document.getElementById('ganjil');
+                let genap = document.getElementById('genap');
+                if (input > 0){
+                    let outGanjil = 0;
+                    let outGenap = 0;
+                    for(let i = 1; i <= input; i++){
+                        if(i % 2 == 0){
+                            outGenap++
+                        }else{
+                            outGanjil++
+                        }
+                    }
+                    ganjil.textContent = outGanjil;
+                    genap.textContent = outGenap;
+                }else{
+                    alert('Gagal');
+                }
+            }
+    </script>
+</body>
+</html>
